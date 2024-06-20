@@ -38,33 +38,27 @@ const Notification = () => {
 
   return (
     <Dialog open={isNotification} onClose={closeHandler}>
-      <Stack p={{
-        xs: '1rem',
-        sm: '2rem'
-      }}
-        maxWidth={'25rem'}
-      >
-        <DialogTitle >
-          Notifications
-        </DialogTitle>
+      <Stack p={{ xs: "1rem", sm: "2rem" }} maxWidth={"25rem"}>
+        <DialogTitle>Notifications</DialogTitle>
 
-        {
-          isLoading ? (
-            <Skeleton />
-          ) : (
-            data?.allRequests.length > 0 ? (
-              data?.allRequests?.map(({ sender, _id, }) => <NotificationItem
-                sender={sender}
-                _id={_id}
-                handler={friendRequestHandler}
-                key={_id} />)
+        {isLoading ? (
+          <Skeleton />
+        ) : (
+          <>
+            {data?.allRequests.length > 0 ? (
+              data?.allRequests?.map(({ sender, _id }) => (
+                <NotificationItem
+                  sender={sender}
+                  _id={_id}
+                  handler={friendRequestHandler}
+                  key={_id}
+                />
+              ))
             ) : (
-              <Typography textAlign={'center'} >
-                0 notifications
-              </Typography>
-            )
-          )
-        }
+              <Typography textAlign={"center"}>0 notifications</Typography>
+            )}
+          </>
+        )}
       </Stack>
     </Dialog>
   )
