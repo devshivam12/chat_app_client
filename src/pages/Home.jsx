@@ -13,6 +13,7 @@ const Home = () => {
       >
         Select a friend to chat
       </Typography>
+      
     </Box>
   )
 }
